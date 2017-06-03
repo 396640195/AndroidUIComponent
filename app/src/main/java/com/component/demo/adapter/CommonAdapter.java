@@ -4,6 +4,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,15 +12,15 @@ import java.util.List;
  */
 
 public class CommonAdapter<T>  extends BaseAdapter {
-    protected List<T> datas;
+    protected List<T> data = new ArrayList<>();
     @Override
     public int getCount() {
-        return datas == null ? 0 : datas.size();
+        return data == null ? 0 : data.size();
     }
 
     @Override
     public  T getItem(int position) {
-        return datas == null ? null : (position > datas.size()-1 ? null : datas.get(position));
+        return data == null ? null : (position > data.size()-1 ? null : data.get(position));
     }
 
     @Override
@@ -33,6 +34,10 @@ public class CommonAdapter<T>  extends BaseAdapter {
     }
 
     public void add(List<T> obj){
-        this.datas.addAll(obj);
+        this.data.addAll(obj);
+    }
+
+    public void clear(){
+        this.data.clear();
     }
 }

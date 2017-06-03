@@ -6,7 +6,7 @@ import java.util.Map;
 
 /**
  * 最基本通用的增册改查操作接口的定义:
- * 如果下面的接口不满足需求，请在具体实现类中增加接口 或者 联系 cwx453587 新增接口;
+ * 如果下面的接口不满足需求，请在具体实现类中增加接口
  */
 public interface IDataProvider<T> {
 

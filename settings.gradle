@@ -1,1 +1,1 @@
-include ':app', ':commonuilib', ':commonutillib'
+include ':app', ':commonuilib', ':commonutillib', ':databaselib-ormlite'
