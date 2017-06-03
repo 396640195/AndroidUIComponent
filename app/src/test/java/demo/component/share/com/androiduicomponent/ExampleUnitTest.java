@@ -1,4 +1,4 @@
-package demo.component.share.com.commonutillib;
+package demo.component.share.com.androiduicomponent;
 
 import org.junit.Test;
 
