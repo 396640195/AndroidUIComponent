@@ -59,4 +59,6 @@ public interface IDataProvider<T> {
      * @return
      */
     List<T> queryForEq(String fieldName, Object value);
+
+    void release();
 }

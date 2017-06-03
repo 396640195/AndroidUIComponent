@@ -3,7 +3,7 @@ package com.common.database;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.huawei.ormlite.sample.db.dao.StudentProvider;
+import com.common.database.db.dao.base.DataProvider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,15 +14,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        //setContentView(R.layout.activity_main);
         oneToOneTest();
     }
 
     public void oneToOneTest(){
         String names[]={"李小龙","王宝强","李连杰","习近平","李克强","马云","赵刚"};
         String lovers[]={"苍老师","机器人","范冰冰","李冰冰","小冰冰","大冰冰","水冰冰"};
-        StudentProvider dao = new StudentProvider(this);
+        DataProvider<Student> dao = new DataProvider<>(this);
+        dao.initDao(Student.class);
 
         Random rnd = new Random();
         List<Student> studentList = new ArrayList<Student>();

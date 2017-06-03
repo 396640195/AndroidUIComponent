@@ -15,12 +15,21 @@ import java.util.concurrent.Callable;
  * 如果下面的接口不满足需求，请在具体实现类中增加接口 或者 联系 cwx453587新增接口;
  */
 
-public abstract  class AbstractDataProvider<T> implements IDataProvider<T> {
+public  class DataProvider<T> implements IDataProvider<T> {
     protected DatabaseOpenHelper mDatabaseOpenHelper;
     protected Dao<T,Integer> mDao;
-    public AbstractDataProvider(Context context){
+    public DataProvider(Context context){
         mDatabaseOpenHelper = DatabaseOpenHelper.getInstance(context);
    }
+
+    public DataProvider initDao(Class clazz){
+        try {
+            mDao = mDatabaseOpenHelper.getDao(clazz);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return this;
+    }
 
     @Override
     public List<T> queryForAll() {
@@ -196,5 +205,12 @@ public abstract  class AbstractDataProvider<T> implements IDataProvider<T> {
             e.printStackTrace();
         }
         return  0;
+    }
+
+    @Override
+    public void release() {
+        if(mDatabaseOpenHelper != null || mDatabaseOpenHelper.isOpen()){
+            mDatabaseOpenHelper.close();
+        }
     }
 }
